@@ -5,19 +5,31 @@ CREATE TABLE IF NOT EXISTS `shoes`.`categories` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `name` (`name` ASC) VISIBLE);
+  UNIQUE INDEX `name` (`name` ASC) VISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `shoes`.`manufacturers` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `name` (`name` ASC) VISIBLE);
+  UNIQUE INDEX `name` (`name` ASC) VISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `shoes`.`role_id` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `name` (`name` ASC) VISIBLE);
+  UNIQUE INDEX `name` (`name` ASC) VISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `shoes`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -30,7 +42,11 @@ CREATE TABLE IF NOT EXISTS `shoes`.`users` (
   INDEX `role_id` (`role_id` ASC) VISIBLE,
   CONSTRAINT `users_ibfk_1`
     FOREIGN KEY (`role_id`)
-    REFERENCES `shoes`.`role_id` (`id`));
+    REFERENCES `shoes`.`role_id` (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `shoes`.`orders` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -38,13 +54,26 @@ CREATE TABLE IF NOT EXISTS `shoes`.`orders` (
   `address` VARCHAR(255) NOT NULL,
   `order_date` DATE NOT NULL,
   `delivery_date` DATE NOT NULL,
-  PRIMARY KEY (`id`));
+  `user_id` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `user_id_idx` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `user_id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `shoes`.`users` (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 14
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `shoes`.`suppliers` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `name` (`name` ASC) VISIBLE);
+  UNIQUE INDEX `name` (`name` ASC) VISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `shoes`.`products` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -69,7 +98,11 @@ CREATE TABLE IF NOT EXISTS `shoes`.`products` (
     REFERENCES `shoes`.`manufacturers` (`id`),
   CONSTRAINT `products_ibfk_3`
     FOREIGN KEY (`supplier_id`)
-    REFERENCES `shoes`.`suppliers` (`id`));
+    REFERENCES `shoes`.`suppliers` (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 11
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `shoes`.`order_items` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -85,7 +118,11 @@ CREATE TABLE IF NOT EXISTS `shoes`.`order_items` (
     ON DELETE CASCADE,
   CONSTRAINT `order_items_ibfk_2`
     FOREIGN KEY (`product_id`)
-    REFERENCES `shoes`.`products` (`id`));
+    REFERENCES `shoes`.`products` (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 6
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
 
 
 INSERT INTO role_id(name) VALUES
