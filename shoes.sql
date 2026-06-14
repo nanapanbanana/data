@@ -37,7 +37,8 @@ CREATE TABLE IF NOT EXISTS `shoes`.`orders` (
   `status` VARCHAR(50) NOT NULL,
   `address` VARCHAR(255) NOT NULL,
   `order_date` DATE NOT NULL,
-  `delivery_date` DATE NOT NULL);
+  `delivery_date` DATE NOT NULL,
+  PRIMARY KEY (`id`));
 
 CREATE TABLE IF NOT EXISTS `shoes`.`suppliers` (
   `id` INT NOT NULL AUTO_INCREMENT,
