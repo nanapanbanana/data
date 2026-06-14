@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS `shoes`.`categories` (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `name` (`name` ASC) VISIBLE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 5
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `shoes`.`manufacturers` (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `name` (`name` ASC) VISIBLE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 5
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `shoes`.`role_id` (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `name` (`name` ASC) VISIBLE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 4
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `shoes`.`users` (
     FOREIGN KEY (`role_id`)
     REFERENCES `shoes`.`role_id` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 5
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `shoes`.`orders` (
     FOREIGN KEY (`user_id`)
     REFERENCES `shoes`.`users` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 14
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `shoes`.`suppliers` (
   PRIMARY KEY (`id`),
   UNIQUE INDEX `name` (`name` ASC) VISIBLE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 4
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `shoes`.`products` (
     FOREIGN KEY (`supplier_id`)
     REFERENCES `shoes`.`suppliers` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 11
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `shoes`.`order_items` (
     FOREIGN KEY (`product_id`)
     REFERENCES `shoes`.`products` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 6
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
